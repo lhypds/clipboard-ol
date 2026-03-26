@@ -1,8 +1,9 @@
 
-Clipboard
-=========
+Clipboard Online
+================
 
-A online clipboard web app.
+
+Tiny online clipboard web app.
 
 
 Dependencies
