@@ -1,32 +1,38 @@
 <?php
 
 $clipboard = "";
-if ((isset($_POST["robotCheck"]) && $_POST["robotCheck"]) && (isset($_COOKIE["robotCheck"]) && $_COOKIE["robotCheck"])) {
-  setcookie("robotCheck", "true");
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  if ((isset($_POST["robotCheck"]) && $_POST["robotCheck"]) && (isset($_COOKIE["robotCheck"]) && $_COOKIE["robotCheck"])) {
+    setcookie("robotCheck", "true", 0, "/");
 
-  if (empty($_POST["clipboard"])) {
-    $clipboard = "";
-  } else {
-    $clipboard = test_input($_POST["clipboard"]);
-
-    // Write to clipboard with submitted text
-    $filename = 'clipboard.txt';
-    if (is_writable($filename)) {
-      if (!$handle = fopen($filename, 'a')) {
-        echo "Error: Cannot open file ($filename)";
-        exit;
-      }
-
-      file_put_contents($filename, ""); // Clean
-      if (fwrite($handle, $clipboard) === FALSE) {
-        echo "Error: Cannot write to file ($filename)";
-        exit;
-      }
-      fclose($handle);
+    if (empty($_POST["clipboard"])) {
+      $clipboard = "";
     } else {
-      echo "Error: The file $filename is not writable";
+      $clipboard = test_input($_POST["clipboard"]);
+
+      // Write to clipboard with submitted text
+      $filename = 'clipboard.txt';
+      if (is_writable($filename)) {
+        if (!$handle = fopen($filename, 'a')) {
+          echo "Error: Cannot open file ($filename)";
+          exit;
+        }
+
+        file_put_contents($filename, ""); // Clean
+        if (fwrite($handle, $clipboard) === FALSE) {
+          echo "Error: Cannot write to file ($filename)";
+          exit;
+        }
+        fclose($handle);
+      } else {
+        echo "Error: The file $filename is not writable";
+      }
     }
   }
+
+  // Prevent form resubmission warnings on browser refresh.
+  header("Location: " . $_SERVER["PHP_SELF"]);
+  exit;
 }
 
 function test_input($data) {
