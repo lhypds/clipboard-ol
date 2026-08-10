@@ -1,9 +1,18 @@
 @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
+
+:root {
+  --code-border: 1px solid #30363d;
+  --code-bg: #f6f8fa;
+}
+
+* {
+  font-family: "Fira Code VF", "Fira Code", monospace;
+}
+
 body {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  font-family: "Fira Code VF", Helvetica, sans-serif;
   font-size: 14px;
 }
 #clipboard-input {
@@ -14,8 +23,10 @@ textarea {
   resize: none;
   margin-right: 50px;
   width: 100%;
-  font-family: "Fira Code VF", Helvetica, sans-serif;
   font-size: 14px;
+  border: var(--code-border);
+  border-radius: 6px;
+  background: var(--code-bg);
 }
 #clipboard-content {
   margin-left: 5px;
@@ -24,9 +35,9 @@ textarea {
 .clipboard {
   font-size: 14px;
   min-height: 200px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: gray;
+  border: var(--code-border);
+  border-radius: 6px;
+  background: var(--code-bg);
   line-height: 140%;
   overflow-y: auto;
   overflow-wrap: break-word;
