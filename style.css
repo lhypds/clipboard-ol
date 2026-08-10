@@ -28,6 +28,11 @@ textarea {
   border-radius: 6px;
   background: var(--code-bg);
 }
+textarea:focus {
+  outline: none;
+  border: var(--code-border);
+  box-shadow: none;
+}
 #clipboard-content {
   margin-left: 5px;
   margin-right: 5px;
@@ -46,4 +51,40 @@ button {
   width: 100px;
   height: 30px;
   margin-top: 8px;
+}
+
+#robotCheck {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  margin: 0 6px 0 0;
+  vertical-align: text-bottom;
+  border: 1px solid #000;
+  border-radius: 2px;
+  background: #fff;
+  cursor: pointer;
+  position: relative;
+}
+
+#robotCheck:checked {
+  background: #000;
+}
+
+#robotCheck:checked::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 3px;
+  height: 7px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+#robotCheck:focus,
+#robotCheck:focus-visible {
+  outline: none;
+  box-shadow: none;
 }

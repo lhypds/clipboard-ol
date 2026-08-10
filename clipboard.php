@@ -57,7 +57,7 @@ function test_input($data) {
   <h3>Text To Submit<br></h3>
   <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <textarea autofocus name="clipboard" rows="12"><?php echo $clipboard; ?></textarea><br>
-    <input id="robotCheck" style="height:12px;flex" type="checkbox" name="robotCheck" <?php if (isset($_COOKIE["robotCheck"]) && $_COOKIE["robotCheck"]) echo "checked"; ?>>I'm not a robot</input>
+    <input id="robotCheck" type="checkbox" name="robotCheck" <?php if (isset($_COOKIE["robotCheck"]) && $_COOKIE["robotCheck"]) echo "checked"; ?>>I'm not a robot</input>
     <script>
       const checkbox = document.getElementById('robotCheck');
       checkbox.addEventListener('change', (event) => {
