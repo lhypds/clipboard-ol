@@ -77,7 +77,7 @@ function test_input($data) {
 <div id="clipboard-content">
   <h3>Clipboard<br></h3>
   <div class="clipboard">
-    <div style="margin:3px">
+    <div>
     <?php
     if ($file = fopen("clipboard.txt", "r")) {
       while (!feof($file)) {
